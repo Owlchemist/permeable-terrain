@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Permeable Terrain</name>
+	<author>Owlchemist</author>
+	<packageId>Owlchemist.PermeableTerrain</packageId>
+	<supportedVersions>
+		<li>1.3</li>
+	</supportedVersions>
+	<description>Normally, the lifespan of filth is treated equally no matter where it lands. This mod makes it so that liquidy type filths, such as blood and vomit, do not last very long if they fall upon permeable terrains such as soil and sand.</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+</ModMetaData>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- These types of terrain are defined as being permeable. The value is a multiplie to the filth's lifespan (0.1 meaning 10 days becomes 1 day) -->
+			<li Class="PatchOperationAddModExtension">
+				<xpath>Defs/TerrainDef[defName="Ice"]</xpath>
+				<value>
+					<li Class="PermeableTerrain.Permeable">
+						<value>0.5</value>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAddModExtension">
+				<xpath>Defs/TerrainDef[takeFootprints or defName="StrawMatting" or defName="PackedDirt"]</xpath>
+				<value>
+					<li Class="PermeableTerrain.Permeable">
+						<value>0.1</value>
+					</li>
+				</value>
+			</li>
+			
+			<!-- Anything with the Liquidy mod extension will receive the special treatment if they land upon permable terrains defined above -->
+			<li Class="PatchOperationAddModExtension">
+				<xpath>Defs/ThingDef[filth and filth[cleaningSound="Interact_CleanFilth_Fluid"]]</xpath>
+				<value>
+					<li Class="PermeableTerrain.Liquidy" />
+				</value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

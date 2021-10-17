@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<PermeableTerrain.Modifier>Permeation modifier (Mod default: {0}, Min: {1}, Max: {2}): </PermeableTerrain.Modifier>
+	<PermeableTerrain.Modifier.Desc>A modifier to the mod's base value, which is around {0}. For example setting this to 50% would shorten filth's lifespan even more.</PermeableTerrain.Modifier.Desc>
+	
+	<PermeableTerrain.OtherModifier>Other filth lifespan (Mod default: {0}, Min: {1}, Max: {2}): </PermeableTerrain.OtherModifier>
+	<PermeableTerrain.OtherModifier.Desc>For any other filth that this mod does not adjust, including liquidy filth that lands on non-permeable surfaces, its base lifespan can be tweaked here.</PermeableTerrain.OtherModifier.Desc>
+</LanguageData>
