@@ -14,18 +14,18 @@ namespace PermeableTerrain
 		{
 			new Harmony(this.Content.PackageIdPlayerFacing).PatchAll();
 			base.GetSettings<ModSettings_PermeableTerrain>();
-			if (Prefs.DevMode) LongEventHandler.QueueLongEvent(() => DevReport(), "PermeableGround.DevReport", false, null);
+			if (Prefs.DevMode) LongEventHandler.QueueLongEvent(() => DevReport(), null, false, null);
 		}
 
 		void DevReport()
 		{
-			var terrainDefs = DefDatabase<TerrainDef>.AllDefs;
+			var terrainDefs = DefDatabase<TerrainDef>.AllDefsListForReading;
 			List<string> report = new List<string>();
-			foreach (var terrainDef in terrainDefs)
+			foreach (TerrainDef terrainDef in terrainDefs)
 			{
 				if(terrainDef.HasModExtension<Permeable>()) report.Add(terrainDef.label);
 			}
-			Log.Message("[Permeable Terrain] The following terrains have been defined as being permeable: " + string.Join(", ", report));
+			Log.Message("[Permeable Terrain] The following terrains have been defined as being permeable:\n - " + string.Join("\n - ", report));
 		}
 
 		public override void DoSettingsWindowContents(Rect inRect)
@@ -34,8 +34,8 @@ namespace PermeableTerrain
 			options.Begin(inRect);
 			options.Label("PermeableTerrain.Modifier".Translate("100%", "25%", "300%") + Math.Round(modifier, 2), -1f, "PermeableTerrain.Modifier.Desc".Translate("10%"));
 			modifier = options.Slider(modifier, 0.25f, 3f);
-			options.Label("PermeableTerrain.OtherModifier".Translate("100%", "25%", "300%") + Math.Round(otherModifier, 2), -1f, "PermeableTerrain.OtherModifier.Desc".Translate());
-			otherModifier = options.Slider(otherModifier, 0.25f, 3f);
+			options.Label("PermeableTerrain.OtherModifier".Translate("100%", "1%", "300%") + Math.Round(otherModifier, 2), -1f, "PermeableTerrain.OtherModifier.Desc".Translate());
+			otherModifier = options.Slider(otherModifier, 0.01f, 3f);
 			if (Prefs.DevMode) options.CheckboxLabeled("DevMode: Enable logging", ref logging, null);
 			options.End();
 			base.DoSettingsWindowContents(inRect);

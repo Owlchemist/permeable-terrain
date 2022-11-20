@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>ReGrowth: Core</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ThingDef[@Name = "BaseFilth"]/filth/disappearsInDays</xpath>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="Filth_RubbleRock" or defName="Filth_RubbleBuilding" or defName="Filth_RubbleBuilding"]/filth</xpath>
+					<value>
+						<disappearsInDays>45~50</disappearsInDays>
+					</value>
+				</li>
+				<li MayRequire="Ludeon.RimWorld.Ideology" Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="Filth_OilSmear"]/filth</xpath>
+					<value>
+						<disappearsInDays>35~40</disappearsInDays>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

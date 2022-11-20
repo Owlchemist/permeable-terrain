@@ -14,10 +14,9 @@ namespace PermeableTerrain
             
             int before = __instance.disappearAfterTicks;
 
-			Map map = __instance.Map;
-            TerrainDef terrainDef = map.terrainGrid.TerrainAt(__instance.Position);
+            TerrainDef terrainDef = __instance.Map?.terrainGrid.TerrainAt(__instance.Position);
 
-            if (__instance.def.HasModExtension<Liquidy>() && terrainDef.HasModExtension<Permeable>())
+            if (__instance.def.HasModExtension<Liquidy>() && (terrainDef?.HasModExtension<Permeable>() ?? false))
             {
                 __instance.disappearAfterTicks = (int)(__instance.disappearAfterTicks * terrainDef.GetModExtension<Permeable>().value * modifier);
             }  

@@ -3,7 +3,7 @@
 	<Operation Class="PatchOperationSequence">
 		<success>Always</success>
 		<operations>
-			<!-- These types of terrain are defined as being permeable. The value is a multiplie to the filth's lifespan (0.1 meaning 10 days becomes 1 day) -->
+			<!-- These types of terrain are defined as being permeable. The value is a multiplied to the filth's lifespan (0.1 meaning 10 days becomes 1 day) -->
 			<li Class="PatchOperationAddModExtension">
 				<xpath>Defs/TerrainDef[defName="Ice"]</xpath>
 				<value>
@@ -18,6 +18,15 @@
 					<li Class="PermeableTerrain.Permeable">
 						<value>0.1</value>
 					</li>
+				</value>
+			</li>
+			
+			<!-- Support for various mods -->
+			<li Class="PatchOperationAdd">
+				<success>Always</success>
+				<xpath>Defs/ThingDef[filth and (label="cum" or label="mixture" or label="water")]/filth</xpath>
+				<value>
+					<cleaningSound>Interact_CleanFilth_Fluid</cleaningSound>
 				</value>
 			</li>
 			
